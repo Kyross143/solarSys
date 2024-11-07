@@ -1,3 +1,23 @@
+
+// Fonction pour afficher/masquer le tableau
+function togglePlanetTable() {
+  const table = document.getElementById("planetTable");
+  const button = document.getElementById("toggleButton");
+
+  // Vérifie la classe pour déterminer la visibilité actuelle
+  if (table.classList.contains("d-none")) {
+      table.classList.remove("d-none"); // Affiche le tableau
+      button.textContent = "Masquer les informations des planètes";
+      getPlanets(); // Charge les données des planètes
+  } else {
+      table.classList.add("d-none"); // Cache le tableau
+      button.textContent = "Afficher les informations des planètes";
+  }
+}
+
+// Ajoute un écouteur d'événement au bouton pour basculer la visibilité du tableau
+document.getElementById("toggleButton").addEventListener("click", togglePlanetTable);
+
 // Fonction pour obtenir les données des planètes
 function getPlanets() {
   const url = "https://api.le-systeme-solaire.net/rest/bodies/";
@@ -5,7 +25,6 @@ function getPlanets() {
   // Faire la requête pour obtenir les données
   fetch(url)
       .then(response => {
-          // Vérifie que la réponse est correcte
           if (response.ok) {
               return response.json();
           } else {
@@ -28,14 +47,19 @@ function getPlanets() {
               const planetList = document.getElementById("planet-list");
               planetList.innerHTML = ""; // Vider le contenu existant
 
-              // Utiliser innerHTML pour afficher les informations de chaque planète
+              // Afficher chaque planète sous forme de ligne de tableau
               planets.forEach(planet => {
                   planetList.innerHTML += `
-                      <div class="planet">
-                          <h3>Nom : ${planet.englishName}</h3>
-                          <p>Masse : ${planet.mass?.massValue} x10^${planet.mass?.massExponent} kg</p>
-                          <p>Diamètre : ${planet.meanRadius * 2} km</p>
-                      </div>
+                      <tr>
+                          <td>${planet.englishName}</td>
+                          <td>${planet.mass?.massValue || 'N/A'} x10^${planet.mass?.massExponent || ''}</td>
+                          <td>${(planet.meanRadius * 2).toFixed(2)} km</td>
+                          <td>${planet.sideralRotation || 'N/A'}</td>
+                          <td>${planet.sideralOrbit || 'N/A'}</td>
+                          <td>${(planet.semimajorAxis / 1000).toFixed(0) || 'N/A'} km</td>
+                          <td>${planet.gravity || 'N/A'} m/s²</td>
+                          <td>${planet.density || 'N/A'} g/cm³</td>
+                      </tr>
                   `;
               });
           } else {
@@ -49,3 +73,9 @@ function getPlanets() {
 
 // Appeler la fonction pour afficher les planètes
 getPlanets();
+
+// je vais un autre fetch pour afficher les information du soleil 
+
+
+
+
