@@ -1,8 +1,12 @@
+
+
 body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-image: url(../systeme-solaire/image/notre-systeme-solaire-3d-planetes-orbite_872074-7576.avif) ;
+    background-image: url(../image/bstract-animation.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #system-solaire {
@@ -12,15 +16,17 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform-style: preserve-3d;
+/*     transform-style: preserve-3d; */
 }
 
 #soleil {
     width: 100px;
     height: 100px;
-    background-color: yellow;
     border-radius: 50%;
     position: absolute;
+    img{
+        width: 250%;
+    }
 }
 
 .planet {
@@ -32,64 +38,70 @@ body, html {
 }
 
 #mercure {
-    background-image: url(../systeme-solaire/image/mercure.png);
-    animation-duration: 5s;
+
+    animation-duration: 10s;
     transform-origin: 150px;
+    img{
+        width: 80%;
+    }
 }
 
 #venus {
-    background-color: orange;
-    animation-duration: 7s;
+    animation-duration: 12s;
     transform-origin: 200px;
+    img{
+        width: 110%;
+    }
 }
 
 #terre {
-    background-color: blue;
-    animation-duration: 10s;
+    animation-duration: 13s;
     transform-origin: 250px;
+    img{
+        width: 130%;
+    }
 }
 
-#terre .lune {
-    width: 15px;
-    height: 15px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: 30px;
-    animation: rotate 2s linear infinite;
-}
 
 #mars {
-    background-color: red;
     animation-duration: 15s;
     transform-origin: 300px;
+    img{
+        width: 95%;
+    }
 }
 
 #jupiter {
-    background-color: hwb(28 4% 6%);
-    animation-duration: 19s;
+    animation-duration: 16s;
     transform-origin: 350px;
+    img{
+        width: 200%;
+    }
 
 }
 
 #saturne {
-    background-color: #b49a05;
-    animation-duration: 23s;
+    animation-duration: 18s;
     transform-origin: 400px;
+    img{
+        width: 180%;
+    }
 }
 
 #uranus {
-    background-color: hsl(199, 96%, 47%);
-    animation-duration: 28s;
+    animation-duration: 19s;
     transform-origin: 450px;
+    img{
+        width: 140%;
+    }
 }
 
 #neptune {
-    background-color: hwb(209 2% 21%);
-    animation-duration: 35s;
+    animation-duration: 21s;
     transform-origin: 500px;
+    img{
+        width: 150%;
+    }
 }
 
 @keyframes rotate {

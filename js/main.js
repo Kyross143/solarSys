@@ -1,39 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const planets = document.querySelectorAll('.planet');
+    let planets = document.querySelectorAll('.planet');
     
     planets.forEach(planet => {
         planet.addEventListener('click', () => {
             alert(`Clicked on ${planet.id}`);
-            // Here, you can fetch and display information about the planet
+            
         });
     });
 
     let zoomLevel = 1;
     document.body.addEventListener('wheel', event => {
         if (event.deltaY > 0) {
-            zoomLevel = Math.min(zoomLevel + 0.1, 2); // Zoom in
+            zoomLevel = Math.min(zoomLevel + 0.1, 2);
         } else {
-            zoomLevel = Math.max(zoomLevel - 0.1, 0.5); // Zoom out
+            zoomLevel = Math.max(zoomLevel - 0.1, 0.5); 
         }
         document.getElementById('solar-system').style.transform = `scale(${zoomLevel})`;
     });
 
-    let isDragging = false;
+    let trainer = false;
     let startX, startY;
     let system = document.getElementById('solar-system');
 
     system.addEventListener('mousedown', event => {
-        isDragging = true;
+        trainer = true;
         startX = event.pageX - system.offsetLeft;
         startY = event.pageY - system.offsetTop;
     });
 
     system.addEventListener('mouseup', () => {
-        isDragging = false;
+        trainer = false;
     });
 
     system.addEventListener('mousemove', event => {
-        if (isDragging) {
+        if (trainer) {
             let x = event.pageX - startX;
             let y = event.pageY - startY;
             system.style.left = `${x}px`;
