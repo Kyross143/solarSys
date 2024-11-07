@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-    // Fonctionnalité de zoom
+    
     let zoomLevel = 1;
     document.body.addEventListener('wheel', event => {
         zoomLevel = event.deltaY > 0 ? Math.min(zoomLevel + 0.1, 2) : Math.max(zoomLevel - 0.1, 0.5);
         systemSolaire.style.transform = `scale(${zoomLevel})`;
     });
 
-    // Fonctionnalité de déplacement
+    
     let isDragging = false;
     let startX, startY;
 
