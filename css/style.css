@@ -1,0 +1,102 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url(../systeme-solaire/image/notre-systeme-solaire-3d-planetes-orbite_872074-7576.avif) ;
+}
+
+#system-solaire {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+#soleil {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.planet {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 20s linear infinite;
+}
+
+#mercure {
+    background-image: url(../systeme-solaire/image/mercure.png);
+    animation-duration: 5s;
+    transform-origin: 150px;
+}
+
+#venus {
+    background-color: orange;
+    animation-duration: 7s;
+    transform-origin: 200px;
+}
+
+#terre {
+    background-color: blue;
+    animation-duration: 10s;
+    transform-origin: 250px;
+}
+
+#terre .lune {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 30px;
+    animation: rotate 2s linear infinite;
+}
+
+#mars {
+    background-color: red;
+    animation-duration: 15s;
+    transform-origin: 300px;
+}
+
+#jupiter {
+    background-color: hwb(28 4% 6%);
+    animation-duration: 19s;
+    transform-origin: 350px;
+
+}
+
+#saturne {
+    background-color: #b49a05;
+    animation-duration: 23s;
+    transform-origin: 400px;
+}
+
+#uranus {
+    background-color: hsl(199, 96%, 47%);
+    animation-duration: 28s;
+    transform-origin: 450px;
+}
+
+#neptune {
+    background-color: hwb(209 2% 21%);
+    animation-duration: 35s;
+    transform-origin: 500px;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
