@@ -7,20 +7,41 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    
+    <button id="fullscreen-btn">Plein Écran</button>
+    <button id="explosion-btn">🔒</button>
+    
     <div id="system-solaire">
-        <div id="soleil"><img src="../image/soleil.png" alt=""></div>
-            <div class="dispo">
-                <div class="planet" id="mercure"><img src="../image/mercure.png" alt="" ></div>
-                <div class="planet" id="venus"><img src="../image/planete-venus.png" alt=""></div>
-                <div class="planet" id="terre"><img src="../image/terre.png" alt=""></div>
-                <div class="planet" id="mars"><img src="../image/mars.png" alt=""></div>
-                <div class="planet" id="jupiter"><img src="../image/jupiter.png" alt=""></div>
-                <div class="planet" id="saturne"><img src="../image/saturne.png" alt=""></div>
-                <div class="planet" id="uranus"><img src="../image/uranus.png" alt=""></div>
-                <div class="planet" id="neptune"><img src="../image/neptune.png" alt=""></div>
-            </div>
+        <div id="soleil"><img src="../image/soleil.png" alt="Soleil"></div>
+        <div class="dispo">
+            <div class="planet" id="mercure" data-nom ="Mercure"><img src="../image/mercure.png" alt="Mercure"></div>
+            <div class="planet" id="venus" data-nom ="Venus"><img src="../image/planete-venus.png" alt="Vénus"></div>
+            <div class="planet" id="terre" data-nom ="Terre"><img src="../image/terre.png" alt="Terre"></div>
+            <div class="planet" id="mars" data-nom ="Mars"><img src="../image/mars.png" alt="Mars"></div>
+            <div class="planet" id="jupiter" data-nom ="Jupiter"><img src="../image/jupiter-png.png" alt="Jupiter"></div>
+            <div class="planet" id="saturne" data-nom ="Saturne"><img src="../image/saturne.png" alt="Saturne"></div>
+            <div class="planet" id="uranus" data-nom ="Uranus"><img src="../image/uranus_png.png" alt="Uranus"></div>
+            <div class="planet" id="neptune" data-nom ="Neptune"><img src="../image/neptune.png" alt="Neptune"></div>
+        </div>
     </div>
-    <script src="../js/main.js"></script>
 
+    <button id="ecraser-btn">Enlever les planetes</button>
+    <!-- <div id="planet-info" class="info-hidden"></div> -->
+    
+    <div id="explosion-images" class="info-hidden">
+        <img src="../image/img-explo/111.jpeg" alt="Image 1">
+        <img src="../image/img-explo/20241015_115901.jpg" alt="Image 2">
+        <img src="../image/img-explo/20241107_212207.jpg" alt="Image 3">
+        <img src="../image/img-explo/image.jpg" alt="Image 4">
+        <img src="../image/img-explo/IMG_7263.jpg" alt="Image 5">
+    </div>
+
+    <div id="modal">
+        <div id="modal-content"></div>
+    </div>
+
+    
+
+    <script src="../js/main.js"></script>
 </body>
 </html>

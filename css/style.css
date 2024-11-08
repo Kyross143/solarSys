@@ -1,18 +1,68 @@
-
-
 body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-image: url(../image/bstract-animation.jpeg);
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../image/bstract-animation.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+#fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: transparent;
+}
+
+#fullscreen-btn:hover {
+    background-color: #555;
+}
+
+#explosion-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 20px;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: aliceblue;
+}
+
+#explosion-btn:hover {
+    color: #555;
+}
+
+
+
+#explosion-images img {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    transform: skew(20deg);
+    transition: transform 1s ease-in-out, left 1s ease-in-out, top 1s ease-in-out;
+}
+
+.info-visible img {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) skew(20deg);
+}
+
 #system-solaire {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,12 +75,14 @@ body, html {
     border-radius: 50%;
     position: absolute;
     margin-right: 160px;
-    img{
-        width: 250%;
-    }
 }
 
-.dispo{
+#soleil img {
+    width: 250%;
+}
+
+
+.dispo {
     margin-right: 400px;
 }
 
@@ -40,73 +92,48 @@ body, html {
     border-radius: 50%;
     position: absolute;
     animation: rotate 20s linear infinite;
+    transition: transform 0.5s ease, z-index 0.5s;
+    cursor: pointer;
 }
 
-#mercure {
-
-    animation-duration: 10s;
-    transform-origin: 150px;
-    img{
-        width: 80%;
-    }
+.planet.zoomed {
+    transform: scale(5);
+    z-index: 1000;
 }
 
-#venus {
-    animation-duration: 12s;
-    transform-origin: 180px;
-    img{
-        width: 110%;
-    }
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
-#terre {
-    animation-duration: 13s;
-    transform-origin: 210px;
-    img{
-        width: 130%;
-    }
+#modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 80%;
 }
 
-
-#mars {
-    animation-duration: 15s;
-    transform-origin: 240px;
-    img{
-        width: 95%;
-    }
+#close-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-#jupiter {
-    animation-duration: 16s;
-    transform-origin: 270px;
-    img{
-        width: 200%;
-    }
-
-}
-
-#saturne {
-    animation-duration: 18s;
-    transform-origin: 300px;
-    img{
-        width: 400%;
-    }
-}
-
-#uranus {
-    animation-duration: 19s;
-    transform-origin: 330px;
-    img{
-        width: 140%;
-    }
-}
-
-#neptune {
-    animation-duration: 21s;
-    transform-origin: 360px;
-    img{
-        width: 150%;
-    }
+#close-btn:hover {
+    background-color: #555;
 }
 
 @keyframes rotate {
@@ -115,6 +142,97 @@ body, html {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+#mercure {
+    animation-duration: 10s;
+    transform-origin: 150px;
+}
+
+#mercure img {
+    width: 80%;
+}
+
+#venus {
+    animation-duration: 12s;
+    transform-origin: 180px;
+}
+
+#venus img {
+    width: 110%;
+}
+
+#terre {
+    animation-duration: 13s;
+    transform-origin: 210px;
+}
+
+#terre img {
+    width: 130%;
+}
+
+#mars {
+    animation-duration: 15s;
+    transform-origin: 240px;
+}
+
+#mars img {
+    width: 95%;
+}
+
+#jupiter {
+    animation-duration: 16s;
+    transform-origin: 270px;
+}
+
+#jupiter img {
+    width: 200%;
+}
+
+#saturne {
+    animation-duration: 18s;
+    transform-origin: 300px;
+}
+
+#saturne img {
+    width: 400%;
+}
+
+#uranus {
+    animation-duration: 19s;
+    transform-origin: 330px;
+}
+
+#uranus img {
+    width: 140%;
+}
+
+#neptune {
+    animation-duration: 21s;
+    transform-origin: 360px;
+}
+
+#neptune img {
+    width: 150%;
+}
+
+#explosion-images img {
+    position: absolute;
+    transition: transform 1s ease-in-out;
+    transform: skew(20deg);
+}
+
+.explode {
+    animation: explode 1s forwards;
+}
+
+@keyframes explode {
+    from {
+        transform: scale(1) translate(0, 0);
+    }
+    to {
+        transform: scale(0) translate(calc(var(--x) * 1vw), calc(var(--y) * 1vh));
     }
 }
 
