@@ -1,4 +1,4 @@
-
+                    /* ca cest les variables*/
     let systemSolaire = document.getElementById('system-solaire');
     let fullscreenBtn = document.getElementById('fullscreen-btn');
     let explosionBtn = document.getElementById('explosion-btn');
@@ -9,7 +9,7 @@
     let ecraserBtn = document.getElementById('ecraser-btn');
     
     
-
+        /* la cest pour laffichage des nom des planetes*/
     planets.forEach(planet => {
         
         let nameSpan = document.createElement('span');
@@ -19,13 +19,13 @@
 
         planet.appendChild(nameSpan);
     });
-
+    /* la Hamidou voulait ecraser le syteme solaire jsai pâs trop pk il est bizzare il aime tout nikker*/
     ecraserBtn.onclick = () => {
         planets.forEach(planet => {
             planet.style.display = "";
         });
     };
-
+    /* jai voulut faire une animation j'ai pas reussi*/
     explosionBtn.addEventListener('click', () => {
         
             document.querySelectorAll('.planet').forEach((planet, index) => {
@@ -37,7 +37,7 @@
             explosionImagesDiv.classList.remove('info-hidden');
             explosionImagesDiv.classList.add('info-visible');
         });
-
+    /* la il est les appel pour API et un systeme de zoom quand on clique mais ca ne marche pas lol*/
     fetch('https://api.le-systeme-solaire.net/rest/bodies/')
         .then(response => response.json())
         .then(data => {
@@ -74,7 +74,7 @@
         });
 
     
-
+/* la jai mis un zoom sur les planetes*/
     let zoomLevel = 1;
     document.body.addEventListener('wheel', event => {
         zoomLevel = event.deltaY > 0 ? Math.min(zoomLevel + 0.1, 2) : Math.max(zoomLevel - 0.1, 0.5);
@@ -83,17 +83,17 @@
 
     let isDragging = false;
     let startX, startY;
-
+/* la cest le systeme de zoom arriere*/
     systemSolaire.addEventListener('mousedown', event => {
         isDragging = true;
         startX = event.pageX - systemSolaire.offsetLeft;
         startY = event.pageY - systemSolaire.offsetTop;
     });
-
+/* la cest le systeme de zoom avant */
     systemSolaire.addEventListener('mouseup', () => {
         isDragging = false;
     });
-
+/* la jai mis un flex sans flex en gros on clique dessu et on peut depositionner ou on veut */
     /* systemSolaire.addEventListener('mousemove', event => {
         if (isDragging) {
             let x = event.pageX - startX;
@@ -102,7 +102,7 @@
             systemSolaire.style.top = `${y}px`;
         }
     }); */
-
+/* la jai mis un systeme de plein ecran dommage que le background ne reste pas */
     fullscreenBtn.addEventListener('click', () => {
         if (!document.fullscreenElement) {
             systemSolaire.requestFullscreen().catch(err => {
